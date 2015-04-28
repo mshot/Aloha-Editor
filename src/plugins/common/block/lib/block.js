@@ -796,8 +796,7 @@ define([
 
 					if ($dropReferenceNode.is('.aloha-block-dropInlineElementIntoEmptyBlock')) {
 						// the user wanted to drop INTO an empty block!
-						$dropReferenceNode.children().remove();
-						$dropReferenceNode.append($currentDraggable);
+						$dropReferenceNode.prepend($currentDraggable);
 					} else if ($dropReferenceNode.is('.aloha-block-droppable-right')) {
 						$dropReferenceNode.html($dropReferenceNode.html() + ' ');
 
@@ -880,7 +879,7 @@ define([
 
 							if (jQuery(this).is(':empty') ||
 								hasOnlyProppingBr ||
-								jQuery(this).html() === '&nbsp;') {
+								jQuery.trim(jQuery(this).text()) === '') {
 								// The user is hovering over an empty
 								// container; simply highlight the container.
 								jQuery(this).addClass(
